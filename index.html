@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Farheen Masood — Web Developer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="nav-wrap">
+    <div class="nav container">
+      <div class="brand"><span>Farheen</span>Masood</div>
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button id="hamburger" class="hamburger" aria-label="menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="home" class="hero container">
+      <div class="hero-left">
+        <div class="eyebrow">Studio • Web • UI</div>
+        <h1 class="huge">Farheen <span class="accent">Masood</span></h1>
+        <p class="lead">I build immersive, modern websites with clean code and beautiful visuals — React, Node, Next.js, Tailwind and MongoDB.</p>
+        <div class="hero-cta">
+          <a class="btn primary" href="contact.html">Hire Me</a>
+          <a class="btn ghost" href="portfolio.html">View Portfolio</a>
+        </div>
+        <div class="kicker">Available for freelance work • Lucknow, India</div>
+      </div>
+
+      <div class="hero-right">
+        <div class="glass-card">
+          <img src="assests/hero.png" alt="Farheen" class="profile" />
+          <div class="card-stick"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section container">
+      <h2 class="section-title">About Me</h2>
+      <p class="section-sub">A bit about who I am and what I do</p>
+      <p>Hi, I'm Farheen Masood, a passionate web developer based in Lucknow, India. With expertise in React, Node.js, Next.js, Tailwind CSS, and MongoDB, I create modern, responsive, and user-friendly websites. I love turning ideas into digital experiences that are both functional and beautiful. When I'm not coding, you can find me exploring new technologies or sharing my journey through my blog.</p>
+    </section>
+
+    <!-- FEATURED PROJECTS -->
+    <section id="projects" class="section container">
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-sub">A selection of projects I built — design + full-stack code</p>
+
+      <div class="grid projects-grid">
+        <article class="project-card">
+          <img src="assests/project1.png" alt="Project 1" />
+          <div class="project-meta">
+            <h3>Portfolio Website</h3>
+            <p>Responsive portfolio using React & Tailwind.</p>
+            <div class="project-buttons">
+              <a href="case-project1.html" class="btn small ghost">case study</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <img src="assests/project2.png" alt="Project 2" />
+          <div class="project-meta">
+            <h3>Data Dashboard</h3>
+            <p>Interactive dashboard built with Node.js & MongoDB.</p>
+            <div class="project-buttons">
+              <a href="case-project2.html" class="btn small ghost">case study</a>
+            </div>
+          </div>
+        </article>
+
+      
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section container">
+      <h2 class="section-title">Skills</h2>
+      <p class="section-sub">What I can do for you</p>
+      <div class="grid services-grid">
+        <div class="service-card">
+          <h3>UI / Frontend</h3>
+          <p>React, Next.js, Tailwind — modern, responsive UIs.</p>
+        </div>
+        <div class="service-card">
+          <h3>Backend & APIs</h3>
+          <p>Node.js, Express, REST & GraphQL APIs, MongoDB.</p>
+        </div>
+        <div class="service-card">
+          <h3>Full-Stack Apps</h3>
+          <p>From idea to deployment — production-ready web apps.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOG PREVIEWS -->
+    <section class="section container">
+      <h2 class="section-title">From the Blog</h2>
+      <div class="grid blog-grid">
+        <article class="blog-card">
+          <img src="assests/blog2.jpg" alt="blog1" />
+          <div class="blog-body">
+            <h4>Why Web Development Feels Like Art</h4>
+            <p class="excerpt">To me, coding is creativity. Every project tells a story through colors, motion, and structure...</p>
+            <a href="blog.html" class="read-link">Read More</a>
+          </div>
+        </article>
+
+        <article class="blog-card">
+          <img src="assests/blog1.png" alt="blog2" />
+          <div class="blog-body">
+            <h4>My First React Project — What I Learned</h4>
+            <p class="excerpt">My first React app changed how I think about components and UI — small reusable pieces with big impact...</p>
+            <a href="blog.html" class="read-link">Read More</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>© 2025 Farheen Masood</div>
+        <div class="socials">
+          
+          <a href="contact.html" aria-label="linkedin">LinkedIn</a>
+          <a href="contact.html" aria-label="email">Email</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

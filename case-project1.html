@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio Website — Case Study</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: #0a0a0a;
+    color: #fff;
+  }
+
+  header {
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    background: #111;
+    box-shadow: 0 0 20px rgba(255, 0, 128, 0.4);
+  }
+
+  .container {
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+    padding: 40px 0;
+  }
+
+  h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 15px #ff0088;
+  }
+
+  .hero-img {
+    width: 100%;
+    border-radius: 15px;
+    margin: 20px 0;
+    box-shadow: 0 0 30px rgba(255, 0, 128, 0.5);
+  }
+
+  .section {
+    margin-top: 40px;
+    padding: 20px;
+    background: #111;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(255, 0, 128, 0.3);
+  }
+
+  .tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .tool {
+    padding: 10px 15px;
+    background: #ff0088;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 0 15px #ff0088;
+  }
+
+  .btn-back {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 20px;
+    background: transparent;
+    border: 2px solid #ff0088;
+    color: #ff0088;
+    font-weight: 600;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .btn-back:hover {
+    background: #ff0088;
+    color: #fff;
+    box-shadow: 0 0 20px #ff0088;
+  }
+
+  /* Scroll reveal animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.8s;
+  }
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+
+<body>
+
+<header>Portfolio Website — Case Study</header>
+
+<div class="container">
+
+ 
+  <div class="section reveal">
+    <h2>Overview</h2>
+    <p>
+      This portfolio website was built using React + Tailwind with smooth animations,
+      a glassmorphism theme, glowing elements, and optimized performance.
+    </p>
+  </div>
+
+  <div class="section reveal">
+    <h2>Tools Used</h2>
+    <div class="tools">
+      <div class="tool">React</div>
+      <div class="tool">Tailwind CSS</div>
+      <div class="tool">FIGMA</div>
+      <div class="tool">JavaScript</div>
+      <div class="tool">CSS3</div>
+    </div>
+  </div>
+
+  <div class="section reveal">
+    <h2>Process</h2>
+    <p>
+      I first created wireframes, then designed the UI in Figma.  
+      Later I built reusable components, added animations, and deployed on Vercel.
+    </p>
+  </div>
+
+  <div class="section reveal">
+    <h2>What I Learned</h2>
+    <p>
+      Component structuring, animation timing, accessibility improvements,
+      SEO optimization and smooth mobile responsiveness.
+    </p>
+  </div>
+
+  <a href="portfolio.html" class="btn-back">⬅ Back to Portfolio</a>
+
+</div>
+
+<script>
+  // Scroll reveal animation
+  const reveals = document.querySelectorAll('.reveal');
+
+  function revealOnScroll() {
+    for (let i = 0; i < reveals.length; i++) {
+      let windowHeight = window.innerHeight;
+      let elementTop = reveals[i].getBoundingClientRect().top;
+
+      if (elementTop < windowHeight - 50) {
+        reveals[i].classList.add('active');
+      }
+    }
+  }
+
+  window.addEventListener('scroll', revealOnScroll);
+  revealOnScroll();
+</script>
+
+</body>
+</html>

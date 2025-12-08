@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — Farheen Masood</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="contact.css" />
+</head>
+<body>
+  <header class="nav-wrap">
+    <div class="nav container">
+      <div class="brand"><span>Farheen</span>Masood</div>
+      <nav class="nav-links">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+      <button id="hamburger4" class="hamburger">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="section contact-section container">
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h2>Let’s build something together</h2>
+          <p>Share a few details about your project and I’ll reply within 24 hours.</p>
+
+          <ul class="contact-info">
+            <li><strong>Email:</strong> farheenmasod304@gmail.com</li>
+            <li><strong>Location:</strong> Lucknow, India</li>
+            <li><strong>Availability:</strong> Freelance — Available</li>
+            <li>
+               <div class="socials">
+              
+
+          <button  style=width:111px height:111px background-color:blue color="blue" >
+           <a href="https://www.linkedin.com/in/farheen-masood-918733262?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" aria-label="linkedin">LinkedIn</a>
+          </button>
+        
+        </div>
+            </li>
+          </ul>
+
+        
+        </div>
+
+        <form id="contactForm" class="form-card" method="POST" action="https://formspree.io/f/xqanybyb">
+          <!-- Replace the action above with your Formspree endpoint -->
+          <label>
+            <input type="text" name="name" placeholder="Your name" required>
+          </label>
+          <label>
+            <input type="email" name="_replyto" placeholder="Your email" required>
+          </label>
+          <label>
+            <textarea name="message" placeholder="Tell me about your project..." required></textarea>
+          </label>
+          <input type="hidden" name="_subject" value="New Contact Message from Portfolio">
+          <button type="submit" class="btn primary">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© 2025 Farheen Masood</div>
+    
+  </footer>
+
+  <script src="contact.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

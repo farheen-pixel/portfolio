@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Data Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      color: #e6e6fa;
+      margin: 0;
+      padding: 20px;
+    }
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      animation: slideIn 1s ease-out;
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .card {
+      background: rgba(138, 43, 226, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(138, 43, 226, 0.3);
+      transition: box-shadow 0.3s;
+    }
+    .card:hover {
+      box-shadow: 0 0 30px #ffb6c1;
+    }
+    canvas {
+      max-width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+    }
+    button {
+      background: #8a2be2;
+      color: #e6e6fa;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    button:hover {
+      background: #ffb6c1;
+      box-shadow: 0 0 15px #ffb6c1;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center; color: #ffb6c1; text-shadow: 0 0 10px #ffb6c1;">Data Dashboard</h1>
+  <div class="dashboard">
+    <div class="card">
+      <h3>Sales Data</h3>
+      <canvas id="salesChart"></canvas>
+      <button onclick="updateChart()">Refresh Data</button>
+    </div>
+    <div class="card">
+      <h3>User Growth</h3>
+      <canvas id="userChart"></canvas>
+    </div>
+  </div>
+  <script>
+    const salesCtx = document.getElementById('salesChart').getContext('2d');
+    const userCtx = document.getElementById('userChart').getContext('2d');
+
+    let salesChart = new Chart(salesCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar'],
+        datasets: [{
+          label: 'Sales',
+          data: [10, 20, 30],
+          backgroundColor: '#8a2be2',
+          borderColor: '#ffb6c1',
+          borderWidth: 1
+        }]
+      }
+    });
+
+    let userChart = new Chart(userCtx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar'],
+        datasets: [{
+          label: 'Users',
+          data: [100, 150, 200],
+          backgroundColor: 'rgba(138, 43, 226, 0.2)',
+          borderColor: '#ffb6c1',
+          fill: true
+        }]
+      }
+    });
+
+    function updateChart() {
+      salesChart.data.datasets[0].data = [Math.random()*50, Math.random()*50, Math.random()*50];
+      salesChart.update();
+    }
+  </script>
+</body>
+</html>

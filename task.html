@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collaborative Task Manager</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      color: #e6e6fa;
+      margin: 0;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+    h1 {
+      text-align: center;
+      color: #ffb6c1;
+      text-shadow: 0 0 15px #ffb6c1;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { text-shadow: 0 0 15px #ffb6c1; }
+      50% { text-shadow: 0 0 25px #ffb6c1, 0 0 35px #ffb6c1; }
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .task-form {
+      background: rgba(138, 43, 226, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(138, 43, 226, 0.3);
+      margin-bottom: 20px;
+      animation: fadeIn 1s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #8a2be2;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #e6e6fa;
+      font-size: 16px;
+    }
+    button {
+      background: #8a2be2;
+      cursor: pointer;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    button:hover {
+      background: #ffb6c1;
+      box-shadow: 0 0 15px #ffb6c1;
+    }
+    .task-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .task {
+      background: rgba(138, 43, 226, 0.1);
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(138, 43, 226, 0.3);
+      cursor: move;
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: slideIn 0.5s ease-out;
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .task:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px #ffb6c1;
+    }
+    .task.dragging {
+      opacity: 0.5;
+      transform: rotate(5deg);
+    }
+    .task h3 {
+      color: #ffb6c1;
+      margin: 0 0 10px 0;
+    }
+    .task p {
+      margin: 5px 0;
+    }
+    .task-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .task-actions button {
+      width: auto;
+      padding: 5px 10px;
+      font-size: 14px;
+    }
+    .export-btn {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .export-btn button {
+      width: 200px;
+    }
+    @media (max-width: 600px) {
+      .task-list {
+        grid-template-columns: 1fr;
+      }
+      input, textarea {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Collaborative Task Manager</h1>
+    <form class="task-form" id="taskForm">
+      <input type="text" id="taskTitle" placeholder="Task Title" required>
+      <textarea id="taskDesc" placeholder="Description" rows="3"></textarea>
+      <input type="date" id="taskDue">
+      <button type="submit">Add Task</button>
+    </form>
+    <div class="task-list" id="taskList"></div>
+    <div class="export-btn">
+      <button onclick="exportToCalendar()">Export to Google Calendar</button>
+    </div>
+  </div>
+  <script>
+    const taskForm = document.getElementById('taskForm');
+    const taskList = document.getElementById('taskList');
+    const taskTitle = document.getElementById('taskTitle');
+    const taskDesc = document.getElementById('taskDesc');
+    const taskDue = document.getElementById('taskDue');
+
+    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    let draggedTask = null;
+
+    function renderTasks() {
+      taskList.innerHTML = '';
+      tasks.forEach((task, index) => {
+        const taskDiv = document.createElement('div');
+        taskDiv.className = 'task';
+        taskDiv.draggable = true;
+        taskDiv.dataset.index = index;
+        taskDiv.innerHTML = `
+          <h3>${task.title}</h3>
+          <p>${task.desc || 'No description'}</p>
+          <p>Due: ${task.due || 'No due date'}</p>
+          <div class="task-actions">
+            <button onclick="editTask(${index})">Edit</button>
+            <button onclick="deleteTask(${index})">Delete</button>
+            <button onclick="toggleShare(${index})">${task.shared ? 'Unshare' : 'Share'}</button>
+          </div>
+        `;
+        taskList.appendChild(taskDiv);
+      });
+      saveTasks();
+    }
+
+    function saveTasks() {
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+
+    taskForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const newTask = {
+        title: taskTitle.value,
+        desc: taskDesc.value,
+        due: taskDue.value,
+        shared: false
+      };
+      tasks.push(newTask);
+      renderTasks();
+      taskForm.reset();
+    });
+
+    function editTask(index) {
+      const task = tasks[index];
+      taskTitle.value = task.title;
+      taskDesc.value = task.desc;
+      taskDue.value = task.due;
+      deleteTask(index);
+    }
+
+    function deleteTask(index) {
+      tasks.splice(index, 1);
+      renderTasks();
+    }
+
+    function toggleShare(index) {
+      tasks[index].shared = !tasks[index].shared;
+      renderTasks();
+    }
+
+    // Drag and Drop
+    taskList.addEventListener('dragstart', (e) => {
+      draggedTask = e.target;
+      e.target.classList.add('dragging');
+    });
+
+    taskList.addEventListener('dragend', (e) => {
+      e.target.classList.remove('dragging');
+      draggedTask = null;
+    });
+
+    taskList.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      const afterElement = getDragAfterElement(taskList, e.clientY);
+      const draggable = document.querySelector('.dragging');
+      if (afterElement == null) {
+        taskList.appendChild(draggable);
+      } else {
+        taskList.insertBefore(draggable, afterElement);
+      }
+    });
+
+    taskList.addEventListener('drop', () => {
+      const newOrder = Array.from(taskList.children).map(el => parseInt(el.dataset.index));
+      tasks = newOrder.map(index => tasks[index]);
+      renderTasks();
+    });
+
+    function getDragAfterElement(container, y) {
+      const draggableElements = [...container.querySelectorAll('.task:not(.dragging)')];
+      return draggableElements.reduce((closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
+        if (offset < 0 && offset > closest.offset) {
+          return { offset: offset, element: child };
+        } else {
+          return closest;
+        }
+      }, { offset: Number.NEGATIVE_INFINITY }).element;
+    }
+
+    function exportToCalendar() {
+      if (tasks.length === 0) {
+        alert('No tasks to export!');
+        return;
+      }
+      const task = tasks[0]; // Export first task as example
+      const startDate = task.due ? new Date(task.due).toISOString().replace(/-|:|\.\d+/g, '') : '20231201T000000Z';
+      const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(task.title)}&details=${encodeURIComponent(task.desc)}&dates=${startDate}/${startDate}`;
+      window.open(url, '_blank');
+    }
+
+    renderTasks();
+  </script>
+</body>
+</html>
