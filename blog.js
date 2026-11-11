@@ -15,4 +15,4 @@ document.querySelectorAll('.read-more').forEach(btn=>{
   });
 });
 
-/* For the blog preview cards on index, link to blog.html already provided */
+

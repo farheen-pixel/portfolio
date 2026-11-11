@@ -4,7 +4,7 @@ if(form){
     e.preventDefault();
     const action = form.action;
     const data = new FormData(form);
-    // optional fetch to Formspree (keeps user on page)
+   
     try {
       const res = await fetch(action, {method:'POST',body:data,headers:{'Accept':'application/json'}});
       if(res.ok){

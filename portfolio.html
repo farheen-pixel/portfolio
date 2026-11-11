@@ -5,277 +5,268 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Farheen Masood — Portfolio</title>
   <style>
-    /* Reset and Base Styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    body {
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, #0a0913, #0e0119);
-      color: #e0e0e0;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #88c1e1, #eef1ff);
+  color: #1a1a1a;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
 
-    /* Header */
-    .nav-wrap {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      backdrop-filter: blur(10px);
-      z-index: 1000;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
+/* NAVBAR (SOFT GLASS UI) */
+.nav-wrap {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
 
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-    .brand {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #00d4ff;
-      text-shadow: 0 0 10px #00d4ff;
-    }
+.brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #6c63ff;
+}
 
-    .brand span {
-      color: hsl(189, 90%, 73%);
-    }
+.brand span {
+  color: #8f6bff;
+}
 
-    .nav-links {
-      display: flex;
-      list-style: none;
-    }
+.nav-links {
+  display: flex;
+  list-style: none;
+}
 
-    .nav-links a {
-      margin: 0 1rem;
-      text-decoration: none;
-      color: #e0e0e0;
-      transition: color 0.3s, text-shadow 0.3s;
-    }
+.nav-links a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: #444;
+  transition: 0.3s;
+}
 
-    .nav-links a:hover {
-      color: #00d4ff;
-      text-shadow: 0 0 10px #00d4ff;
-    }
+.nav-links a:hover {
+  color: #6c63ff;
+}
 
-    .hamburger {
-      display: none;
-      background: none;
-      border: none;
-      color: #e0e0e0;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+}
 
-    /* Main Content */
-    main {
-      padding-top: 80px;
-    }
+/* MAIN */
+main {
+  padding-top: 90px;
+}
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
 
-    .section {
-      padding: 4rem 0;
-      animation: fadeInUp 1s ease-out;
-    }
 
-    .section-title {
-      font-size: 2.5rem;
-      text-align: center;
-      margin-bottom: 1rem;
-      color: #00d4ff;
-      text-shadow: 0 0 15px #00d4ff;
-    }
 
-    .section-sub {
-      text-align: center;
-      font-size: 1.2rem;
-      margin-bottom: 3rem;
-      color: #b0b0b0;
-    }
+.section-title {
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: #6c63ff;
+}
 
-    /* Projects Grid */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
+.section-sub {
+  text-align: center;
+  color: #666;
+  margin-bottom: 3rem;
+}
 
-    .project-card {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 10px;
-      overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
 
-    .project-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
-    }
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
 
-    .project-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      transition: transform 0.3s;
-    }
 
-    .project-card:hover img {
-      transform: scale(1.05);
-    }
+.project-card {
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0,0,0,0.05);
+  margin-top:15px;
+}
 
-    .project-meta {
-      padding: 1.5rem;
-    }
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 60px rgba(108,99,255,0.15);
+}
 
-    .project-meta h3 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-      color: hsl(189, 90%, 73%);
-    }
+.project-meta {
+  padding: 1.5rem;
+}
 
-    .project-meta p {
-      margin-bottom: 1rem;
-      color: #b0b0b0;
-    }
 
-    .project-tech {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
+.project-meta h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
 
-    .tech-tag {
-      background: rgba(0, 212, 255, 0.2);
-      color: #00d4ff;
-      padding: 0.3rem 0.6rem;
-      border-radius: 5px;
-      font-size: 0.8rem;
-      border: 1px solid #00d4ff;
-    }
+.project-meta p {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
 
-    .project-buttons {
-      display: flex;
-      gap: 1rem;
-    }
 
-    .btn {
-      padding: 0.5rem 1rem;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: all 0.3s;
-      font-weight: bold;
-    }
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
 
-    .btn.primary {
-      background: #00d4ff;
-      color: #000;
-      box-shadow: 0 0 10px #00d4ff;
-    }
+.tech-tag {
+  background: rgba(108,99,255,0.1);
+  color: #6c63ff;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  border: 1px solid rgba(108,99,255,0.2);
+}
 
-    .btn.primary:hover {
-      background: #0099cc;
-      box-shadow: 0 0 20px #00d4ff;
-    }
+/* BUTTONS */
+.project-buttons {
+  display: flex;
+  gap: 1rem;
+}
 
-    .btn.ghost {
-      border: 1px solid hsl(189, 90%, 73%);
-      color: hsl(189, 90%, 73%);
-      background: transparent;
-    }
+.btn {
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
 
-    .btn.ghost:hover {
-      background: hsl(189, 90%, 73%);
-      color: #000;
-      box-shadow: 0 0 10px hsl(189, 90%, 73%);
-    }
+.btn.primary {
+  background: linear-gradient(135deg, #6c63ff, #8f6bff);
+  color: white;
+  box-shadow: 0 10px 20px rgba(108,99,255,0.2);
+}
 
-    /* Footer */
-    .footer {
-      background: rgba(0, 0, 0, 0.9);
-      padding: 2rem 0;
-      text-align: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
+.btn.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(108,99,255,0.3);
+}
 
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
+.btn.ghost {
+  border: 1px solid #6c63ff;
+  color: #6c63ff;
+}
 
-    .socials a {
-      margin: 0 1rem;
-      color: #e0e0e0;
-      text-decoration: none;
-      transition: color 0.3s, text-shadow 0.3s;
-    }
+.btn.ghost:hover {
+  background: #6c63ff;
+  color: white;
+}
 
-    .socials a:hover {
-      color: #00d4ff;
-      text-shadow: 0 0 10px #00d4ff;
-    }
+/* FOOTER */
+.footer {
+padding-bottom:12px;
+  text-align: center;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  margin-top: 3rem;
+}
 
-    /* Animations */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  color: #666;
+}
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .nav {
-        flex-direction: column;
-        padding: 1rem;
-      }
+.socials a {
+  margin: 0 1rem;
+  color: #6c63ff;
+  text-decoration: none;
+}
 
-      .nav-links {
-        flex-direction: column;
-        margin-top: 1rem;
-      }
+/* ANIMATION */
+.project-card {
+  animation: fadeInUp 0.6s ease;
+}
 
-      .nav-links a {
-        margin: 0.5rem 0;
-      }
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-      .hamburger {
-        display: block;
-      }
+/* MOBILE */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
 
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
+  .nav-links.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    padding: 0.5rem 0;
+  }
 
-      .footer-inner {
-        flex-direction: column;
-        gap: 1rem;
-      }
-    }
+  .nav-links.active a {
+    margin: 0;
+    padding: 0.75rem 2rem;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
   </style>
 </head>
 <body>
@@ -306,7 +297,7 @@
             <h3>Personal Portfolio Website</h3>
             <p>A responsive, modern portfolio built with React and Tailwind CSS. Features smooth animations, dark mode, and optimized performance for a seamless user experience.</p>
             <div class="project-tech">
-              <span class="tech-tag">React</span>
+              <span class="tech-tag">HTML</span>
               <span class="tech-tag">Tailwind CSS</span>
               <span class="tech-tag">JavaScript</span>
             </div>
@@ -318,18 +309,18 @@
         </article>
 
         <article class="project-card">
-         
+
           <div class="project-meta">
-            <h3>Interactive Data Dashboard</h3>
-            <p>An analytics dashboard for visualizing data in real-time. Built with Node.js backend, MongoDB for data storage, and Chart.js for interactive charts. Includes user authentication and API integrations.</p>
+            <h3>Spotify Clone website</h3>
+            <p>I built a responsive and interactive music streaming interface, focusing on clean UI, component-based architecture, and smooth user experience similar to real-world applications.</p>
             <div class="project-tech">
-              <span class="tech-tag">Node.js</span>
-              <span class="tech-tag">MongoDB</span>
-              <span class="tech-tag">Express</span>
-              <span class="tech-tag">Chart.js</span>
+              <span class="tech-tag">HTML</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">JavaScript</span>
+            
             </div>
             <div class="project-buttons">
-              <a href="dashboard.html" class="btn primary">Live Demo</a>
+              <a href="https://spotifyweb-farh.netlify.app/" class="btn primary">Live Demo</a>
               
             </div>
           </div>
@@ -346,9 +337,9 @@
             <h3>Collaborative Task Manager</h3>
             <p>A team collaboration tool for managing tasks and projects. Includes real-time updates, drag-and-drop functionality, and integration with Google Calendar. Built with Firebase for backend.</p>
             <div class="project-tech">
+              <span class="tech-tag">HTML</span>
               <span class="tech-tag">React</span>
-              <span class="tech-tag">Firebase</span>
-              <span class="tech-tag">Material-UI</span>
+              <span class="tech-tag">TailWind CSS</span>
               <span class="tech-tag">JavaScript</span>
             </div>
             <div class="project-buttons">
